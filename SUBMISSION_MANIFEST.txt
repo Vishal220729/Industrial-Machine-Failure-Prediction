@@ -1,0 +1,86 @@
+================================================================================
+LEARN DEPTH ACADEMY LLP
+TRACK 1 - FINAL CAPSTONE - PROBLEM 21
+INDUSTRIAL MACHINE FAILURE PREDICTION
+================================================================================
+
+SUBMISSION DELIVERABLES MANIFEST & COMPLIANCE VERIFICATION
+
+1. OFFICIAL PROBLEM STATEMENT & OBJECTIVE:
+   - Predict whether an industrial milling machine is likely to experience
+     an operational breakdown within a defined operating window.
+   - Status: COMPLETED & VERIFIED.
+
+2. INVESTIGATION AREAS (ALL 11 INVESTIGATED WITHOUT EXCEPTION):
+   [x] 1. Data Quality        -> 10,000 records, correct dtypes.
+   [x] 2. Missing Values      -> Exactly 0 missing values across all features.
+   [x] 3. Duplicates          -> Exactly 0 duplicate records.
+   [x] 4. Class Balance       -> 96.61% Nominal (0) vs 3.39% Failure (1) (28.5:1 ratio).
+   [x] 5. Distributions       -> Histograms & KDE generated for all continuous sensors.
+   [x] 6. Relationships       -> Pearson correlation heatmap (Torque vs Speed: r = -0.88).
+   [x] 7. Outliers            -> Operational boundary dispersion boxplots generated.
+   [x] 8. Preprocessing       -> ColumnTransformer fitted strictly on 80% train split.
+   [x] 9. Feature Relevance   -> Domain relevance grounded in machining dynamics.
+   [x] 10. Data Leakage       -> UDI/Product ID dropped; TWF, HDF, PWF, OSF, RNF quarantined.
+   [x] 11. Error Analysis     -> Misclassified test samples analyzed (11 FN, 116 FP).
+
+3. EXPECTED INPUTS PHYSICAL COUPLING (AI4I 2020 DATASET):
+   - Temperature       -> Air temperature [K] & Process temperature [K]
+   - Vibration         -> Rotational speed [rpm] & Torque [Nm] (Cutting chattering)
+   - Pressure          -> Torque [Nm] (Mechanical cutting force)
+   - Runtime           -> Tool wear [min] (Cumulative cutting duration)
+   - Maintenance Gap   -> Tool wear [min] vs critical wear threshold (253 min)
+   * Authentic UCI features preserved with zero fabricated data.
+
+4. FOUNDATIONAL MACHINE LEARNING MODELS BENCHMARKED:
+   - Logistic Regression : Accuracy=82.45%, Recall=82.35%, Precision=14.18%, F1=0.2419, FN=12
+   - K-Nearest Neighbors : Accuracy=97.35%, Recall=27.94%, Precision=82.61%, F1=0.4176, FN=49 (72% missed)
+   - Decision Tree (CHAMPION) : Accuracy=93.65%, Recall=83.82%, Precision=32.95%, F1=0.4730, FN=11
+   * Champion Justification: Lowest False Negatives (11), Highest F1-score, Rule interpretability.
+
+5. FINAL DELIVERABLES DIRECTORY CONTENTS:
+   ├── report/
+   │   ├── technical_report.pdf          (Submission-ready PDF with all chapters & figures)
+   │   ├── Final report.pdf              (Duplicate alias for convenience)
+   │   └── technical_report.docx         (Fully editable Word document)
+   │
+   ├── presentation/
+   │   └── presentation.pptx             (Professional 20-slide presentation for viva defense)
+   │
+   ├── notebook/
+   │   └── machine_failure_prediction.ipynb (29-section notebook executed end-to-end)
+   │
+   ├── app.py                            (Interactive Streamlit web application)
+   ├── requirements.txt                  (Compatible package dependencies)
+   ├── README.md                         (Full project documentation & run instructions)
+   │
+   ├── dataset/
+   │   └── ai4i2020.csv                  (UCI benchmark dataset: 10,000 records)
+   │
+   ├── model/
+   │   ├── machine_failure_model.pkl     (Serialized champion Decision Tree classifier)
+   │   └── preprocessing_pipeline.pkl    (Serialized ColumnTransformer pipeline)
+   │
+   ├── results/                          (All 7 high-res evaluation & EDA charts)
+   │   ├── target_distribution.png
+   │   ├── feature_distributions.png
+   │   ├── correlation_heatmap.png
+   │   ├── boxplots.png
+   │   ├── confusion_matrix.png
+   │   ├── roc_curve.png
+   │   └── model_comparison.png
+   │
+   ├── screenshots/streamlit/            (Authentic UI screenshots of live app)
+   │   ├── streamlit_app_overview.png
+   │   ├── streamlit_prediction_normal.png
+   │   └── streamlit_prediction_failure.png
+   │
+   └── src/                              (Modular production source code)
+       ├── data_preprocessing.py
+       ├── train_model.py
+       ├── evaluate_model.py
+       ├── run_tests.py
+       └── utils.py
+
+6. VERIFICATION STATUS: 100% COMPLETE & SUBMISSION READY.
+================================================================================
